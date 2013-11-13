@@ -29,7 +29,7 @@
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Manage</a></li>
+                  <li><a onclick="javascript: $('#AccountModal').modal('show');">Manage</a></li>
                   <li><a href="#">Logout</a></li>
                 </ul>
               </li>
@@ -76,18 +76,6 @@
                         <li><a href="#">Previous</a></li>
                         <li><a href="#">Next</a></li>
                     </ul>
-                </div>
-            </div>
-            
-            <!-- This second panel is an example of a collapsed account.
-                Simply the panel-body div will be hidden -->
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    Collapsed Account
-                    <b class="glyphicon glyphicon-chevron-down"></b>
-                </div>
-                <div class="panel-body hidden">
-                    Account Info
                 </div>
             </div>
             
@@ -140,6 +128,20 @@
                         <button>Submit</button>
                         <button>Cancel</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="AccountModal" tabindex="-1" role="dialog" aria-hidden>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismess="modal" aria-hidden="true">&times;</button>
+                        <h4>Account Management</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    
                 </div>
             </div>
         </div>
