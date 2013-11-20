@@ -76,21 +76,24 @@ CREATE TABLE IF NOT EXISTS `Cash_Accout` (
     `A_ID` INT NOT NULL,
     `Withdraw_Fee` DOUBLE NOT NULL,
     `Num_free_Withdraws` INT NOT NULL,
-    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE
+    PRIMARY KEY (`A_ID`),
+    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Bitcoin_Account`(
     `A_ID` INT NOT NULL,
     `Wallet_Type` VARCHAR(20) NOT NULL,
     `Processing_Fee` DOUBLE NOT NULL,
-    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE
+    PRIMARY KEY(`A_ID`),
+    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Bank_Account` (
     `A_ID` INT NOT NULL,
     `B_ID` INT NOT NULL,
-    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE,
-    FOREIGN KEY (`B_ID`) REFERENCES Bank(`B_ID`) ON DELETE CASCADE
+    PRIMARY KEY(`A_ID`,`B_ID`),
+    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`),
+    FOREIGN KEY (`B_ID`) REFERENCES Bank(`B_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Bitcoin`(
@@ -99,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `Bitcoin`(
     `Balance` DOUBLE NOT NULL,
     `A_ID` INT NOT NULL,
     PRIMARY KEY(`Public_Address`),
-    FOREIGN KEY(`A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE
+    FOREIGN KEY(`A_ID`) REFERENCES Account(`A_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Transfer`(
@@ -110,13 +113,14 @@ CREATE TABLE IF NOT EXISTS `Transfer`(
     `Buyer_A_ID` INT NOT NULL, 
     `Seller_A_ID` INT NOT NULL,
     PRIMARY KEY (`T_ID`),
-    FOREIGN KEY (`Buyer_A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE,
-    FOREIGN KEY (`Seller_A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE
+    FOREIGN KEY (`Buyer_A_ID`) REFERENCES Account(`A_ID`),
+    FOREIGN KEY (`Seller_A_ID`) REFERENCES Account(`A_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Transfer_Bitcoin`(
     `T_ID` INT NOT NULL,
     `Public_Address` VARCHAR(33) NOT NULL,
-    FOREIGN KEY (`T_ID`) REFERENCES Transfer(`T_ID`) ON DELETE CASCADE,
-    FOREIGN KEY (`Public_Address`) REFERENCES Bitcoin(`Public_Address`) ON DELETE CASCADE
+    PRIMARY KEY (`T_ID`,`Public_address`),
+    FOREIGN KEY (`T_ID`) REFERENCES Transfer(`T_ID`),
+    FOREIGN KEY (`Public_Address`) REFERENCES Bitcoin(`Public_Address`)
 ) ENGINE = InnoDB;
