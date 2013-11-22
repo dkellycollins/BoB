@@ -1,9 +1,27 @@
 /* Get the total balance in each that the bank owns. */
-SELECT SUM(Balance)
+SELECT A_ID, Balance, Interest_Rate
 FROM Account
-WHERE B_ID = ?
+WHERE B_ID = 1;
+/* Expected Results
++------+---------+---------------+
+| A_ID | Balance | Interest_Rate |
++------+---------+---------------+
+|    1 |       5 |          0.02 |
+|    8 |     100 |          1.15 |
++------+---------+---------------+
+2 rows in set (0.00 sec)
+*/
 
-SELECT SUM(Balance)
-FROM Account, Bank
-WHERE Bank.B_ID = Account.B_ID
-    AND Bank.Name = ?
+SELECT A_ID, Balance, Interest_Rate
+FROM Account A, Bank B
+WHERE B.Name = "Bank of Bitcoins"
+    AND A.B_ID = B.B_ID;
+/* Expected Results
++------+---------+---------------+
+| A_ID | Balance | Interest_Rate |
++------+---------+---------------+
+|    1 |       5 |          0.02 |
+|    8 |     100 |          1.15 |
++------+---------+---------------+
+2 rows in set (0.01 sec)
+*/

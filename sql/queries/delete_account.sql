@@ -12,4 +12,4 @@ WHERE C_ID=1;
 DELETE FROM `Account`
 WHERE C_ID IN (SELECT c.C_ID
                 FROM Customer c
-                WHERE c.First_Name = 'Herp' AND c.Last_Name = 'Derp');
+                WHERE c.First_Name = 'Sue' AND c.Last_Name = 'Parker');

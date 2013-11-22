@@ -34,12 +34,10 @@ SELECT TDate, TTime, Cash_Transfer,
     CBuyer.First_Name AS Buyer_First_Name, CBuyer.Last_Name AS Buyer_Last_Name, 
     CSeller.First_Name AS Seller_First_Name, CSeller.Last_NAme AS Seller_Last_Name
 FROM Transfer, Account ABuyer, Customer CBuyer, Account ASeller, Customer CSeller
-WHERE (CBuyer.First_Name = "Sue" 
-        AND CBuyer.Last_Name = "Parker" 
+WHERE (CBuyer.First_Name = "Sue" AND CBuyer.Last_Name = "Parker" 
         AND Transfer.Buyer_A_ID = ABuyer.A_ID
         AND CBuyer.C_ID = ABuyer.C_ID)
-    OR (CSeller.First_Name = "Sue"
-        AND CSeller.Last_Name = "Parker"
+    OR (CSeller.First_Name = "Sue" AND CSeller.Last_Name = "Parker"
         AND Transfer.Seller_A_ID = ASeller.A_ID
         AND CSeller.C_ID = ASeller.C_ID)
     AND CBuyer.C_ID != CSeller.C_ID;
