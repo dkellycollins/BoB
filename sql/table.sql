@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `Contact_Info` (
     `CI_ID` INT NOT NULL AUTO_INCREMENT,
     `Phone_num` VARCHAR(12) NOT NULL,
     `Address_1` VARCHAR(50) NOT NULL,
-    `Address_2` VARCHAR(50) NOT NULL,
+    `Address_2` VARCHAR(50),
     `Zip` INT NOT NULL,
     PRIMARY KEY(`CI_ID`),
     FOREIGN KEY(`Zip`) REFERENCES Zipcode(`Zip`) ON DELETE CASCADE
