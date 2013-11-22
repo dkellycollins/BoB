@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `Contact_Info` (
 CREATE TABLE IF NOT EXISTS `Bank`(
     `B_ID` INT NOT NULL AUTO_INCREMENT,
     `Name` VARCHAR(30) NOT NULL,
-    `Current_Bitccoin_Value` DOUBLE NOT NULL,
+    `Current_Bitcoin_Value` DOUBLE NOT NULL,
     `CI_ID` INT NOT NULL,
     PRIMARY KEY(`B_ID`),
     FOREIGN KEY(`CI_ID`) REFERENCES Contact_Info(`CI_ID`) ON DELETE CASCADE
@@ -68,11 +68,12 @@ CREATE TABLE IF NOT EXISTS `Account`(
     `Interest_rate` DOUBLE NOT NULL,
     `Balance` DOUBLE NOT NULL,
     `C_ID` INT NOT NULL,
+    `B_ID` INT NOT NULL,
     PRIMARY KEY (`A_ID`),
     FOREIGN KEY (`C_ID`) REFERENCES Customer(`C_ID`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Cash_Accout` (
+CREATE TABLE IF NOT EXISTS `Cash_Account` (
     `A_ID` INT NOT NULL,
     `Withdraw_Fee` DOUBLE NOT NULL,
     `Num_free_Withdraws` INT NOT NULL,
