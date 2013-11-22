@@ -96,11 +96,33 @@ INSERT INTO Account (Interest_rate, Balance, C_ID, B_ID)
         AND Bank.Name = "Bank of Money";
 INSERT INTO Cash_Account VALUES (LAST_INSERT_ID(),4,9);
 
-/* Transfer */
-/*
-INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-01-01,12:12:00, 1.00,0,1);
-INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-04-13, 15:00:00, 500.43, 1,2);
-INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-05-12, 08:00:00, 123.01, 2,3);
-INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-05-14, 23:00:00,1000000.00,3,4);
-INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-08-23, 09:00:00, 5132.25, 4,0);
-*/
+/* Transfers */
+INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) 
+    SELECT '2013-01-01', '12:12:00', 1.00, C1.C_ID, C2.C_ID
+    FROM Customer C1, Customer C2
+    WHERE C1.First_Name = "Bob" AND C1.Last_Name = "Parker"
+        AND C2.First_Name = "Sue" AND C2.Last_Name = "Parker";
+
+INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) 
+    SELECT '2013-04-13', '15:00:00', 500.43, C1.C_ID, C2.C_ID
+    FROM Customer C1, Customer C2
+    WHERE C1.First_Name = "Billard" AND C1.Last_Name = "Job"
+        AND C2.First_Name = "Rob" AND C2.Last_Name = "Job";
+
+INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) 
+    SELECT '2013-05-12', '08:00:00', 123.01, C1.C_ID, C2.C_ID
+    FROM Customer C1, Customer C2
+    WHERE C1.First_Name = "Billy" AND C1.Last_Name = "Job"
+        AND C2.First_Name = "Bill" AND C2.Last_Name = "Job";
+        
+INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) 
+    SELECT '2013-05-14', '23:00:00', 1000000.00, C1.C_ID, C2.C_ID
+    FROM Customer C1, Customer C2
+    WHERE C1.First_Name = "Rob" AND C1.Last_Name = "Job"
+        AND C2.First_Name = "Sue" AND C2.Last_Name = "Parker";
+        
+INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) 
+    SELECT '2013-08-23', '09:00:00', 5132.25, C1.C_ID, C2.C_ID
+    FROM Customer C1, Customer C2
+    WHERE C1.First_Name = "Sue" AND C1.Last_Name = "Parker"
+        AND C2.First_Name = "Billard" AND C2.Last_Name = "Job";
