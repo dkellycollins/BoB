@@ -29,7 +29,7 @@ WHERE LOWER(CLI.Username) = LOWER("bobp") AND CLI.Password = "orange"
 1 row in set (0.00 sec)
 */
     
-/* This query will get all information about the bank requiring no other input but username and password */
+/* This query will get all information about the customer requiring no other input but username and password */
 SELECT First_Name, Last_Name, Phone_num, Address_1, Address_2, Z.Zip, City, zState
 FROM Customer_Log_In CLI, Customer C, Contact_Info CI, Zipcode Z
 WHERE LOWER(CLI.Username) = LOWER("bobp") AND CLI.Password = "orange"

@@ -22,8 +22,6 @@ BEGIN
     END IF;
 END;
 
-
-
 DROP TRIGGER IF EXISTS transfer_money;
 /*
 DELIMITER |

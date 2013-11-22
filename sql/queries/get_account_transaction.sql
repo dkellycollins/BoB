@@ -25,8 +25,18 @@ WHERE (CBuyer.First_Name = ?
         
 /* Get transactions for a specific day. */
 SELECT Date, Time, Cash_Transfer, Buyer_First_Name, Buyer_Last_Name, Seller_First_Name, Seller_Last_Name
-FROM Transaction, Customer Buyer, Customer Seller
+FROM Transaction, Account ABuyer, Customer CBuyer, Account ASeller, Customer CSeller
 WHERE Transaction.Date = ?
-    AND Buyer.C_ID = Transaction.Buyer_A_ID
+    AND ABuyer.A_ID = Transaction.Buyer_A_ID
+    AND CBuyer.C_ID = ABuyer.C_ID
+    AND ASeller.A_ID = Transaction.Seller_A_ID
+    AND CSeller.C_ID = ASeller.C_ID
 
 /* Get transactions for a date range */
+SELECT Date, Time, Cash_Transfer, Buyer_First_Name, Buyer_Last_Name, Seller_First_Name, Seller_Last_Name
+FROM Transaction, Account ABuyer, Customer CBuyer, Account ASeller, Customer CSeller
+WHERE Transaction.Date <= ? AND Transaction.Date >= ?
+    AND ABuyer.A_ID = Transaction.Buyer_A_ID
+    AND CBuyer.C_ID = ABuyer.C_ID
+    AND ASeller.A_ID = Transaction.Seller_A_ID
+    AND CSeller.C_ID = ASeller.C_ID

@@ -1,7 +1,7 @@
 1. User logs in. (Login page -> Main Page)
     - Enter username and password.
     - Retrive user information and display it (customer_login.sql)
-    - Retrive list of customer accounts and display it (get_customer_bitcoin_account.sql and get_customer_cash_account.sql)
+    - Retrive list of customer accounts and display it (get_customer_accounts.sql)
 2. User clicks on account in list (Main Page)
     - Retrive account details and display it (get_customer_bitcoin_account.sql and get_customer_cash_account.sql)
     - Retrive transactions for the selected account and display them (get_account_transactions.sql)
@@ -17,7 +17,7 @@
 1.Bank logs in. 
     -Enter username and password.
     -Retrive bank information and display it (bank_login.sql)
-    -Retrive list of accounts the bank manages and display them (get_bank_bitcoin_account.sql and get_bank_cash_accout.sql)
+    -Retrive list of accounts the bank manages and display them (get_customer_accounts.sql)
 2. Bank clicks on account in list.
     - Retrive account details and display then (get_bank_bitcoin_account.sql and get_bank_cash_account
     - Retrive transactions for the selected account and display them (get_account_transactions.sql)
