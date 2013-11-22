@@ -4,6 +4,8 @@ INSERT INTO Customer_Bank VALUES ('Bob', 'Parker', 0);
 INSERT INTO Customer_Log_In VALUES ('8ight', 'apple', 0);
 INSERT INTO Account VALUES (0.02,5.0,0);
 INSERT INTO Cash_Account VALUES (5,10,0);
+INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-01-01,12:12:00, 1.00,0,1);
+
 
 INSERT INTO Zipcode VALUES (77775, 'St Louis', 'MO');
 INSERT INTO Contact_Info VALUES ('111-222-3333','11213 Arch St. Louis, Missouri 77879','',77775);
@@ -11,6 +13,8 @@ INSERT INTO Customer_Bank VALUES ( 'Bob', 'Parker', 1);
 INSERT INTO Customer_Log_In VALUES ('bobp', 'orange', 1);
 INSERT INTO Account VALUES (0.03,5.0,1);
 INSERT INTO Bitcoin_Account VALUES (2,10,1);
+INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-04-13, 15:00:00, 500.43, 1,2);
+
 
 INSERT INTO Zipcode VALUES (11111, 'Charlestone', 'SC');
 INSERT INTO Contact_Info VALUES ('111-992-9533','1126 Bill St, SC 11111','',11111);
@@ -18,6 +22,8 @@ INSERT INTO Customer_Bank VALUES ( 'Bill', 'Job', 2);
 INSERT INTO Customer_Log_In VALUES ('bill', 'notapassword', 2);
 INSERT INTO Account VALUES (0.03,5.0,2);
 INSERT INTO Bitcoin_Account VALUES (2,10,2);
+INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-05-12, 08:00:00, 123.01, 2,3);
+
 
 INSERT INTO Zipcode VALUES (11123, 'Charlestone', 'SC');
 INSERT INTO Contact_Info VALUES ('111-242-2633','1126 Bill St, SC 11123','',11123);
@@ -25,6 +31,8 @@ INSERT INTO Customer_Bank VALUES ( 'Bill', 'Job', 3);
 INSERT INTO Customer_Log_In VALUES ('bill', 'notapassword', 3);
 INSERT INTO Account VALUES (0.03,5.0,3);
 INSERT INTO Bitcoin_Account VALUES (2,10,3);
+INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-05-14, 23:00:00,1000000.00,3,4);
+
 
 INSERT INTO Zipcode VALUES (115592, 'City', 'NC');
 INSERT INTO Contact_Info VALUES ('999-222-3333','1326 City St, NC 115592','',115592);
@@ -33,6 +41,7 @@ INSERT INTO Customer_Log_In VALUES ('chill', 'cold', 4);
 INSERT INTO Account VALUES (0.03,5.0,4);
 INSERT INTO Bitcoin_Account VALUES (0.97,23,4);
 INSERT INTO Money_Account VALUES (9,4,4);
+INSERT INTO `Transfer` (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_ID`) VALUES (2013-08-23, 09:00:00, 5132.25, 4,0);
 
 INSERT INTO Zipcode VALUES (11112, 'City', 'CA');
 INSERT INTO Contact_Info VALUES ('111-222-3333','9999 State St, CA 11112','',11112);
