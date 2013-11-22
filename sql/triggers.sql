@@ -1,22 +1,14 @@
 DROP TRIGGER IF EXISTS transfer_trig;
-/
 DELIMITER $
 CREATE TRIGGER transfer_trig AFTER INSERT ON Transfer
 FOR EACH ROW
 BEGIN
-  IF EXISTS (SELECT * FROM Bitcoin where A_ID = New.Buyer_A_ID) THEN
-    UPDATE Bitcoin SET Balance = (NEW.Cash_transfer + Bitcoin.Balance) 
-        WHERE Bitcoin.A_ID = NEW.Buyer_A_ID;
-    UPDATE Bitcoin SET Balance = (Bitcoin.Balance - NEW.Cash_transfer) 
-        WHERE Bitcoin.A_ID = NEW.Seller_A_ID;
-  ELSE
     UPDATE Account SET Balance = (NEW.Cash_transfer + Account.Balance) 
         WHERE Account.A_ID = NEW.Buyer_A_ID;
     UPDATE Account SET Balance = (Account.Balance - NEW.Cash_transfer) 
         WHERE Account.A_ID = NEW.Seller_A_ID;
   END IF;
 END;
-*/
     
 DROP TRIGGER IF EXISTS Upd_Balances;
 CREATE TRIGGER Upd_Balances AFTER UPDATE ON Bank

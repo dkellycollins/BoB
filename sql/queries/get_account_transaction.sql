@@ -13,14 +13,20 @@ WHERE Customer.First_Name = ? AND Customer.Last_Name = ?
 
 /* Select transactions and buyer and seller names with a given name. */
 SELECT Date, Time, Cash_Transfer, Buyer_First_Name, Buyer_Last_Name, Seller_First_Name, Seller_Last_Name
-FROM Transaction, Customer Buyer, Customer Seller
-WHERE (Buyer.First_Name = ? 
-        AND Buyer.Last_Name = ? 
-        AND Transaction.Buyer_A_ID = Buyer.C_ID)
+FROM Transaction, Account ABuyer, Customer CBuyer, Account ASeller, Customer CSeller
+WHERE (CBuyer.First_Name = ? 
+        AND CBuyer.Last_Name = ? 
+        AND Transaction.Buyer_A_ID = ABuyer.A_ID
+        AND CBuyer.C_ID = ABuyer.C_ID)
     OR (Seller.First_Name = ? 
         AND Seller.Last_Name = ? 
-        AND Transaction.Seller_A_ID = Seller.C_ID);
+        AND Transaction.Seller_A_ID = ASeller.A_ID
+        AND CSeller.C_ID = ASeller.C_ID);
         
 /* Get transactions for a specific day. */
+SELECT Date, Time, Cash_Transfer, Buyer_First_Name, Buyer_Last_Name, Seller_First_Name, Seller_Last_Name
+FROM Transaction, Customer Buyer, Customer Seller
+WHERE Transaction.Date = ?
+    AND Buyer.C_ID = Transaction.Buyer_A_ID
 
 /* Get transactions for a date range */
