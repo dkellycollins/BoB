@@ -1,0 +1,12 @@
+INSERT INTO `Account` VALUES (0,0.0,0,0);
+
+UPDATE `Account` SET `A_ID`=0
+WHERE `A_ID` = 1;
+
+INSERT INTO `Account` VALUE (6, 0.0,0,-1);
+
+UPDATE `Account` SET `C_ID`=767854323456
+WHERE `A_ID`=1;
+
+DELETE FROM `Customer`
+WHERE `A_ID` = 0;
