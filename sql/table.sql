@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS `Bitcoin`;
 DROP TABLE IF EXISTS `Bank_Account`;
 DROP TABLE IF EXISTS `Bitcoin_Account`;
 DROP TABLE IF EXISTS `Cash_Accout`;
-DROP TABLE IF EXISTS `Account`;
+DROP TABLE IF EXISTS F`Account`;
 DROP TABLE IF EXISTS `Customer_Log_In`;
 DROP TABLE IF EXISTS `Customer`;
 DROP TABLE IF EXISTS `Bank_Log_In`;
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `Cash_Accout` (
     `Withdraw_Fee` DOUBLE NOT NULL,
     `Num_free_Withdraws` INT NOT NULL,
     PRIMARY KEY (`A_ID`),
-    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`)
+    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Bitcoin_Account`(
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `Bitcoin_Account`(
     `Wallet_Type` VARCHAR(20) NOT NULL,
     `Processing_Fee` DOUBLE NOT NULL,
     PRIMARY KEY(`A_ID`),
-    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`)
+    FOREIGN KEY (`A_ID`) REFERENCES Account(`A_ID`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 
