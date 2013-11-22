@@ -13,3 +13,17 @@ BEGIN
 $
 DELIMITER ;
     
+
+delimiter |
+CREATE TRIGGER `Upd_Balances` AFTER UPDATE ON `Bank`
+FOR EACH ROW
+BEGIN
+    IF NEW.Current_Bitcoin_Value <> OLD.Current_Bitcoin_Value THEN
+        UPDATE `Account` AS ac SET `Balace` = (Balance *(NEW.Current_Bitccoin_Value/OLD.Current_Bitccoin_Value))
+        WHERE EXISTS ( SELECT *
+                        FROM `Bitcoin_Account` AS ba
+                        WHERE ac.B_ID= NEW.B_ID AND ac.A_ID = ba.A_ID);
+    END IF;
+END;
+|
+delimiter ;
