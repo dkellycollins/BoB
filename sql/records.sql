@@ -131,3 +131,10 @@ INSERT INTO Transfer (`TDate`,`TTime`, `Cash_transfer`, `Buyer_A_ID`,`Seller_A_I
     WHERE C1.First_Name = "Sue" AND C1.Last_Name = "Parker" AND A1.C_ID = C1.C_ID
         AND C2.First_Name = "Billard" AND C2.Last_Name = "Job" AND A2.C_ID = C2.C_ID
     LIMIT 1;
+    
+/* Additional data will be generated as we have users sign up. When a user signs 
+up they will create entries in the Customer, Contact_Info, and Customer_Log_In
+tables. Also usually a customer will create a cash account, adding to Account
+and Cash_Account, and a bitcoin account, adding to Account and Bitcoin_Account.
+Finally once the user starts transfering funds between their and others accounts
+the transfer table will gain entiries. */
