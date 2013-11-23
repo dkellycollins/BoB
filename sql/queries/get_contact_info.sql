@@ -10,3 +10,19 @@ WHERE Contact_Info.CI_ID = 1
 +--------------+---------------------------------+-----------+-------+-----------+--------+
 1 row in set (0.00 sec)
 */
+
+/* 10. Retrives all contact info for customers within a zipcode. */
+SELECT First_Name, Last_Name, Phone_Num, Address_1, Address_2, Z.Zip, City, zState
+FROM Customer C, Contact_Info CI, Zipcode Z
+WHERE Z.Zip = 66502
+    AND C.CI_ID = CI.CI_ID
+    AND CI.Zip = Z.Zip
+ORDER BY Z.zState, Z.City;
+/* Expected Results
++------------+-----------+--------------+------------------+-----------+-------+-----------+--------+
+| First_Name | Last_Name | Phone_Num    | Address_1        | Address_2 | Zip   | City      | zState |
++------------+-----------+--------------+------------------+-----------+-------+-----------+--------+
+| Bob        | Parker    | 111-111-1111 | 123 Steet Street | Apt 123   | 66502 | Manhattan | KS     |
++------------+-----------+--------------+------------------+-----------+-------+-----------+--------+
+1 row in set (0.00 sec)
+*/

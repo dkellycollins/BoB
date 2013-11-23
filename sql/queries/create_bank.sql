@@ -1,5 +1,6 @@
 /* Simply inserts new information into relavent tables for a new bank.
-    All values must be provided in the application. */
+    All values must be provided in the application. 
+    The final insert may fail if the user choose the same user name*/
 
 INSERT INTO Contact_Info (Phone_num, Address_1, Zip)
     VALUES ("785-222-5555", "102 Street st", 66502);
