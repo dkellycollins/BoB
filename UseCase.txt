@@ -1,0 +1,45 @@
+1. User logs in. (Login page -> Main Page)
+    - Enter username and password.
+    - Retrive user information and display it (customer_login.sql)
+    - Retrive list of customer accounts and display it (get_customer_accounts.sql)
+2. User clicks on account in list (Main Page)
+    - Retrive account details and display it (get_customer_bitcoin_account.sql and get_customer_cash_account.sql)
+    - Retrive transactions for the selected account and display them (get_account_transactions.sql)
+3. User modifies user information (Main Page Manage Dialog)
+    - Collect new information
+    - Update user information (update_customer.sql)
+4. User transfers money from one account to another (Main Page Transfer Dialog)
+    - Create new transaction (create_transfer.sql)
+        -If bitcoins are involved transfer bitcoins (either to account or to bank)
+    - Update account balances (trigger)
+    
+    
+1.Bank logs in. 
+    -Enter username and password.
+    -Retrive bank information and display it (bank_login.sql)
+    -Retrive list of accounts the bank manages and display them (get_customer_accounts.sql)
+2. Bank clicks on account in list.
+    - Retrive account details and display then (get_bank_bitcoin_account.sql and get_bank_cash_account
+    - Retrive transactions for the selected account and display them (get_account_transactions.sql)
+3. Bank modifies user information (Main Page Manage Dialog)
+    - Collect new information
+    - Update bank information (update_bank.sql)
+    - If current bitcoin value was updated, update all bitcoin_account balances (trigger)
+4. Bank creates new account (Main Page New Account Dialog)
+    - Create new account in database (create_cash_account.sql and create_bitcoin_account.sql)
+5. Bank transfers money from one account to another (Main Page Transfer Dialog)
+    - Create new transaction (create_transfer.sql)
+        -If bitcoins are involved transfer bitcoins (either to account or to bank)
+    - Update account balances (trigger)
+6. Bank deletes account (Main Page Delete Account Dialog)
+    - Delete account (delete_account.sql)
+    - If bitcoin account transfer bitcoins to the bank.
+7. Bank deletes customer (Main Page Delete Customer Dialog)
+    - Delete customer (delete_customer.sql)
+    - Delete customer login. (Cascade)
+    - Delete customer contact info (Cascade)
+    - Delete accounts. (Cascade)
+    
+Changes
+    Add a table for the bank to own bitcoins. These bitcoins will have no account. (This might also be able to be done if we change account to be able to be owned by the bank only.)
+    

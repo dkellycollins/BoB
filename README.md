@@ -1,12 +1,10 @@
-
     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
     '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
      `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
     ----------------------------------------------------------------- 
-
-
+    
 Welcome to your Django project on Cloud9 IDE!
 
 Here are some steps to get you started:
@@ -23,7 +21,6 @@ $ curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 4) Run Django
 $ python manage.py runserver $IP:$PORT
 
-
 Happy coding!
 The Cloud9 IDE team
 
@@ -35,4 +32,3 @@ You may also want to follow the Django tutorial to create your first application
 https://docs.djangoproject.com/en/1.5/intro/tutorial01/
 
 Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE.
-To watch some training videos, visit http://www.youtube.com/user/c9ide
