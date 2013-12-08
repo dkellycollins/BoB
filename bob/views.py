@@ -21,15 +21,12 @@ def customer(request, customer_id):
         'accounts' : accounts
     })
     
-#def accountManagement(request, 
 
 def createUser(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(form.username,form.email,form.password)
-            user.save()
-            userid = User.objects.latest().id
+            form.save()
             return HttpResponse('/account/' + userid)
     else:
         form = UserCreationForm()
@@ -38,9 +35,20 @@ def createUser(request):
         })
         
 def changePassword(request):
-    if request.method == 'POST' && !request.user.is_authenticated():
-        form = ChangePasswordForm(request)
-        user
-    
+    if request.method == 'POST' && request.user.is_authenticated():
+        form = SetPasswordForm(request.POST)
+        if form.isValid():
+            form.save()
+        return HttpResponse('/success')
+    else:
+        form = SetPasswordForm()
+        return render(request, 'bob/form.html', {
+            form : form,
+        }
+        
+
+
+
+
   
  
