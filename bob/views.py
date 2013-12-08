@@ -21,15 +21,12 @@ def customer(request, customer_id):
         'accounts' : accounts
     })
     
-#def accountManagement(request, 
 
 def createUser(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(form.username,form.email,form.password)
-            user.save()
-            userid = User.objects.latest().id
+            form.save()
             return HttpResponse('/account/' + userid)
     else:
         form = UserCreationForm()
@@ -63,6 +60,7 @@ def transfer(request)
     else:
         return HttpResponse('Unauthorized', status=401)
         
+<<<<<<< HEAD
 def transferGet(request)
     #if customer
     #accounts = Accounts.objects.filter(customer = Customer.objects.get(id = customer_id))
@@ -89,3 +87,23 @@ def bank(request, bank_id)
     return render(request, 'bob/bankAccounts.html', {
         'accounts' : accounts
         })
+=======
+def changePassword(request):
+    if request.method == 'POST' && request.user.is_authenticated():
+        form = SetPasswordForm(request.POST)
+        if form.isValid():
+            form.save()
+        return HttpResponse('/success')
+    else:
+        form = SetPasswordForm()
+        return render(request, 'bob/form.html', {
+            form : form,
+        }
+        
+
+
+
+
+  
+ 
+>>>>>>> 2452ce337d9226a364e0b0aaef4cbf0cc9449fbb
