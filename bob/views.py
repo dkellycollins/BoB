@@ -36,11 +36,54 @@ def createUser(request):
         return render(request, 'bob/user.html', {
             form : form,
         })
-        
-def changePassword(request):
-    if request.method == 'POST' && !request.user.is_authenticated():
-        form = ChangePasswordForm(request)
-        user
     
-  
- 
+def manageCustomer(request, customer_id)
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            return manageCustomerPost(request)
+        else:
+            return manageCustomerGet(request, customer_id)
+    else:
+        return HttpResponse('Unauthorized', status=401)
+    
+def manageCustomerGet(request, customer_id)
+    #if customer
+    customer = Customer.objects.get(id = customer_id)
+    customer.accounts = Accounts.objects.filter(customer = customer)
+    return render(request, 'bob/customerAccountManagement.html', {
+        'customer' : customer
+        })
+    
+def transfer(request)
+    if request.user.is_authenticated():
+        if request.method = 'POST':
+            return transferPost(request)
+        else:
+            return transferGet(request)
+    else:
+        return HttpResponse('Unauthorized', status=401)
+        
+def transferGet(request)
+    #if customer
+    #accounts = Accounts.objects.filter(customer = Customer.objects.get(id = customer_id))
+    #if bank
+    #accounts = Account.objects.filter(customer = Bank.objects.get(id = bank_id))
+    return render(request, 'bob/transfer.html', {
+        'accounts' : accounts
+        })
+    
+def bank(request, bank_id)
+    #verify bank
+    cash_accounts = CashAccount.objects.filter(bank = Bank.objects.get(id = bank_id))
+    bitcoin_accounts = BitCoinAccount.objects.filter(bank = Bank.objects.get(id = bank_id))
+    for account in cash_accounts:
+        account.account_type = "cash"
+        account.transactions = Transfer.objects.filter(buyerID = account) | Transfer.objects.filter(seller = account)
+    for account in bitcoin_accounts:
+        account.account_type = "bitcoin"
+        account.transactions = Transfer.objects.filter(buyerID = account) | Transfer.objects.filter(seller = account)
+    accounts = list(cash_accounts)
+    accounts.extend(bitcoin_accounts)
+    return render(request, 'bob/bankAccounts.html', {
+        'accounts' : accounts
+        })
