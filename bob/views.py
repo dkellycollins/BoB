@@ -79,9 +79,11 @@ def bank(request, bank_id)
     for account in cash_accounts:
         account.account_type = "cash"
         account.transactions = Transfer.objects.filter(buyerID = account) | Transfer.objects.filter(seller = account)
+        account.customer = Customer.objects.filter(id = account.id)
     for account in bitcoin_accounts:
         account.account_type = "bitcoin"
         account.transactions = Transfer.objects.filter(buyerID = account) | Transfer.objects.filter(seller = account)
+        account.customer = Customer.objects.filter(id = account.id)
     accounts = list(cash_accounts)
     accounts.extend(bitcoin_accounts)
     return render(request, 'bob/bankAccounts.html', {
