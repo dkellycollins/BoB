@@ -1,0 +1,65 @@
+{% extends "bob/mainLayout.html" %}
+
+{% block content %}
+{% for account in accounts %}
+<div id="{{ account.id }}" class="panel panel-info">
+    <div class="panel-heading" onclick="togglePanel({{ account.id }})">
+        {{ account.type|upper }} Account : {{ account.id }} <!-- <b class="glyphicon glyphicon-chevron-up"></b> -->
+        {{ account.balance }}
+    </div>
+    <div class="panel-body">
+        {% if account.type|lower == 'cash' %}
+        <!-- display cash account details -->
+        <p>Withdrawl Fee: {{ account.withdrawl_fee }}</p>
+        <p>Number Withdraws: {{ account.number_withdraws }}</p>
+        {% endif %}
+        {% if account.type|lower == 'bitcoin' %}
+        <!-- display bitcoin account details -->
+        <p>Wallet Type: {{ account.wallet_type }}</p>
+        <p>Processing Fee: </p>
+        {% endif %}
+        <div class="panel panel-info">
+            <div class="panel-heading">Transfers</div>
+            <table class="table">
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Deposit</th>
+                    <th>Withdrawal</th>
+                </tr>
+                {% for transaction in account.transactions %}
+                <tr>
+                    <td>{{ transaction.data }}</td>
+                    <td>{{ transaction.desc }}</td>
+                    {% if transaction.buyer_id == account.id %}
+                    <td>{{ transaction.cash_value }}</td>
+                    {% else %}
+                    <td>-</td>
+                    {% endif %}
+                    {% if transaction.seller_id == account.id %}
+                    <td>{{ transaction.cash_value }}</td>
+                    {% else %}
+                    <td>-</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% empty %}
+<p>No accounts</p>
+{% endfor %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var togglePanel = function(id)
+    {
+        $('#' + id + '.panel-body').toggle(400, function()
+        {
+            //Switch carrot here.
+        });
+    }
+</script>
+{% endblock %}

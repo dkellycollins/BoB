@@ -80,7 +80,6 @@ The original balance of account 1 and 2 was 5.
 
 Upd_Balances
 mysql> UPDATE `Bank` SET Current_Bitcoin_Value = Bank.Current_Bitcoin_Value + 1,     `Name` = 'Test Bank' WHERE B_ID = 1;
-*/
 Query OK, 1 row affected (0.02 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
@@ -99,3 +98,4 @@ mysql> select * from Account;
 +------+---------------+------------------+------+------+
 8 rows in set (0.00 sec)
 Account 8 is the only bitcoin account that belongs to the bank we updated. So it should have been the only account updated.
+*/
